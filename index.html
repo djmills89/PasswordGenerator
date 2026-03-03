@@ -16,13 +16,13 @@
 
   <form action="">
 
-    <label for="">Character Length</label><span>0</span>
-    <input type="range" name="" id="">
+    <label for="">Character Length</label><span class="password__length">0</span>
+    <input type="range" name="" id="" min="8" max="16">
 
     <fieldset>
       <legend>Password Options</legend>
 
-      <input type="checkbox" name="" id="upper-case">
+      <input type="checkbox" name="" id="upper-case" checked>
       <label for="upper-case">Include Uppercase Letters</label>
 
       <input type="checkbox" name="" id="lower-case">
@@ -30,7 +30,7 @@
 
       <input type="checkbox" name="" id="numbers">
       <label for="numbers">Include Numbers</label>
-      
+
       <input type="checkbox" name="" id="symbols">
       <label for="symbols">Include Symbols</label>
     </fieldset>
@@ -40,5 +40,6 @@
     <button type="submit">Generate</button>
   </form>
 
+<script src="script.js"></script>
 </body>
 </html>
