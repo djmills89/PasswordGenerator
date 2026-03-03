@@ -10,20 +10,35 @@
 </head>
 <body>
 
-  Password Generator
+  <h1>Password Generator</h1>
 
-  P4$5W0rD!
+  <div class="password">P4$5W0rD!</div>
 
-  Character Length
+  <form action="">
 
-  Include Uppercase Letters
-  Include Lowercase Letters
-  Include Numbers
-  Include Symbols
+    <label for="">Character Length</label><span>0</span>
+    <input type="range" name="" id="">
 
-  Strength
+    <fieldset>
+      <legend>Password Options</legend>
 
-  Generate
+      <input type="checkbox" name="" id="upper-case">
+      <label for="upper-case">Include Uppercase Letters</label>
+
+      <input type="checkbox" name="" id="lower-case">
+      <label for="lower-case">Include Lowercase Letters</label>
+
+      <input type="checkbox" name="" id="numbers">
+      <label for="numbers">Include Numbers</label>
+      
+      <input type="checkbox" name="" id="symbols">
+      <label for="symbols">Include Symbols</label>
+    </fieldset>
+
+    <div class="password__strength">Strength</div>
+
+    <button type="submit">Generate</button>
+  </form>
 
 </body>
 </html>
