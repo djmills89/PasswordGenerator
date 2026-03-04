@@ -1,0 +1,179 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --white: #fff;
+    --black: #000;
+    --grey-950: #08070b; /* gradient color 2*/
+    --grey-900: #14131b; /*gradient color 1*/
+    --grey-850: #18171f;
+    --grey-800: #24232c;
+    --grey-700: #54535b;
+    --grey-600: #817d92;
+    --grey-200: #e6e5ea;
+
+    --green-200: #a4ffaf;
+    --yellow-300: #f8cd65;
+    --orange-400: #fb7c58;
+    --red-500: #f64a4a;
+
+    --ff-family: 'JetBrains Mono', sans-serif;
+    --fs-1: 3.2rem;
+    --fs-2: 2.4rem;
+    --fs-3: 1.8rem;
+    --fs-4: 1.6rem;
+    
+    --fw-bold: 700;
+
+    --lh-loose: 4.2rem;
+    --lh-mid: 3.2rem;
+    --lh-tight: 2.4rem;
+    --lh-ex-tight: 2rem;
+
+    --space-100: 0.8rem;
+    --space-200: 1.6rem;
+    --space-300: 2.4rem;
+    --space-400: 3.2rem;
+    --space-700: 5.6rem;
+    --space-1000: 8rem;
+    --space-1300: 10.4rem;
+    --space-1600: 12.8rem;
+    --space-2000: 16rem;
+    --space-2200: 17.6rem;
+    --space-2300: 18.4rem;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-weight: var(--fw-bold);
+    font-family: var(--ff-family);
+}
+
+legend {
+    display: none;
+}
+
+main {
+    padding-inline: var(--space-200);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-200);
+}
+
+h1 {
+    font-size: var(--fs-3);
+    line-height: var(--lh-ex-tight);
+    color: var(--grey-600);
+}
+
+.password__display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: var(--grey-800);
+}
+
+.password__display img {
+    display: inline-block;
+    margin-inline-end: var(--space-200);
+}
+
+.password {
+    padding: var(--space-200);
+    font-size: var(--fs-2);
+    line-height: var(--lh-mid);
+    color: var(--grey-700);
+}
+
+form {
+    padding: var(--space-200);
+    display: flex;
+    flex-direction: column;
+    background-color: var(--grey-800);
+    width: 100%;
+}
+
+.form__character label {
+    font-size: var(--fs-4);
+    line-height: var(--lh-ex-tight);
+    color: var(--grey-200);
+}
+
+form input[type="range"] {
+    margin-block-end: var(--space-400);
+}
+
+.form__character {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form__character span {
+    font-size: var(--fs-2);
+    line-height: var(--lh-mid);
+    color: var(--green-200);
+}
+
+fieldset {
+    border: none;
+    margin-block-end: var(--space-400);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-200);
+}
+
+fieldset label {
+    font-size: var(--fs-4);
+    line-height: var(--lh-ex-tight);
+    color: var(--grey-200);
+    margin-inline-start: var(--space-200);
+}
+
+.password__strength {
+    padding-inline-start: var(--space-200);
+    padding-block: 1.4rem;
+    margin-block-end: var(--space-200);
+    background-color: var(--grey-850);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.password__strength p {
+    font-size: var(--fs-4);
+    line-height: var(--lh-ex-tight);
+    color: var(--grey-600);
+}
+
+.password__strength .strength__display {
+    display: flex;
+    gap: var(--space-100);
+    margin-inline-end: var(--space-200);
+}
+
+.password__strength .strength__levels {
+    width: 1rem;
+    height: 2.8rem;
+    border: 2px solid var(--grey-200);
+}
+
+button[type="submit"] {
+    padding-inline: var(--space-1300);
+    padding-block: var(--space-200);
+    font-size: var(--fs-4);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-ex-tight);
+    color: var(--grey-800);
+    background-color: var(--green-200);
+    border: none;
+}

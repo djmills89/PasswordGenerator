@@ -5,40 +5,64 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
+
+  <link rel="stylesheet" href="./styles/styles.css">
   <title>Frontend Mentor | Password generator app</title>
 </head>
 <body>
-
-  <h1>Password Generator</h1>
-
-  <div class="password">P4$5W0rD!</div>
-
-  <form action="">
-
-    <label for="">Character Length</label><span class="password__length">0</span>
-    <input type="range" name="" id="" min="8" max="16">
-
-    <fieldset>
-      <legend>Password Options</legend>
-
-      <input type="checkbox" name="" id="upper-case" checked>
-      <label for="upper-case">Include Uppercase Letters</label>
-
-      <input type="checkbox" name="" id="lower-case">
-      <label for="lower-case">Include Lowercase Letters</label>
-
-      <input type="checkbox" name="" id="numbers">
-      <label for="numbers">Include Numbers</label>
-
-      <input type="checkbox" name="" id="symbols">
-      <label for="symbols">Include Symbols</label>
-    </fieldset>
-
-    <div class="password__strength">Strength</div>
-
-    <button type="submit">Generate</button>
-  </form>
+<main>
+  
+    <h1>Password Generator</h1>
+  
+    <div class="password__display">
+      <p class="password">P4$5W0rD!</p>
+      <span><img src="./assets/images/icon-copy.svg" alt="Text Copy Icon"></span>
+    </div>
+  
+    <form action="">
+  
+      <div class="form__character">
+        <label for="form__range">Character Length</label><span class="password__length">0</span>
+      </div>
+      <input type="range" name="" id="form__range" min="8" max="16">
+  
+      <fieldset>
+        <legend>Password Options</legend>
+  
+        <div class="checkbox__container">
+          <input type="checkbox" name="" id="upper-case" checked>
+          <label for="upper-case">Include Uppercase Letters</label>
+        </div>
+  
+        <div class="checkbox__container">
+          <input type="checkbox" name="" id="lower-case">
+          <label for="lower-case">Include Lowercase Letters</label>
+        </div>
+  
+        <div class="checkbox__container">
+          <input type="checkbox" name="" id="numbers">
+          <label for="numbers">Include Numbers</label>
+        </div>
+  
+        <div class="checkbox__container">
+          <input type="checkbox" name="" id="symbols">
+          <label for="symbols">Include Symbols</label>
+        </div>
+      </fieldset>
+  
+      <div class="password__strength">
+        <p>Strength</p>
+        <div class="strength__display">
+          <div class="strength__levels"></div>
+          <div class="strength__levels"></div>
+          <div class="strength__levels"></div>
+          <div class="strength__levels"></div>
+        </div>
+      </div>
+  
+      <button type="submit">Generate <img src="./assets/images/icon-arrow-right.svg" alt=""></button>
+    </form>
+</main>
 
 <script src="script.js"></script>
 </body>
