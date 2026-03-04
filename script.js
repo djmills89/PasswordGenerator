@@ -1,14 +1,11 @@
 function init() {
-    const checkboxes = document.querySelectorAll('input[type="checkbox"')
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]')
     const form = document.querySelector('form')
     const passwordRange = document.querySelector('input[type="range"]')
     const passwordDisplay = document.querySelector('.password')
     const passwordLength = document.querySelector('.password__length')
     passwordLength.textContent = passwordRange.value
 
-
-    
-    // const generatedPassword = generatePassword(passwordLength.value, poolArr.split(""), poolArr)
 
     passwordRange.addEventListener('input', (e) => {
         passwordLength.textContent = passwordRange.value
@@ -17,11 +14,12 @@ function init() {
     form.addEventListener('submit', (e) => {
         e.preventDefault()
         const poolArr = setPool(checkboxes)
+        if (poolArr === '') {
+            console.log('you must select at least one option')
+            return
+        }
         passwordDisplay.textContent = generatePassword(passwordRange.value, poolArr.split(""), poolArr)
     })
-    
-
-    // console.log(generatedPassword)
 }
 
 
@@ -33,25 +31,27 @@ function setPool(input) {
     const includeSymbols = Array.from(input).find(element => element.id === 'symbols').checked
 
 
-    if (includeUpperCase) pool += 'ABCDEFGHIJKLMNOPQURSTUVWXYZ'
-    if (includeLowerCase) pool += 'abcdefghijklmnopqurtuvwxyz'
+    if (includeUpperCase) pool += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    if (includeLowerCase) pool += 'abcdefghijklmnopqrstuvwxyz'
     if (includeNumbers) pool += '0123456789'
     if (includeSymbols) pool += '!@#$%^&*()-_+={}[]|\:;"<>,.?/~`'
     return pool
 }
 
 
-function generatePassword(userPasswordLength, array, lengthController) {
+function generatePassword(userPasswordLength, array) {
     let password = ''
     for (let i = 0; i < userPasswordLength; i++) {
-        password += array[randIndex(lengthController)]
+        password += array[randIndex(array.length)]
     }
     return password
 }
 
 
-function randIndex(array) {
-     return Math.floor(Math.random() * array.length)
+function randIndex(length) {
+    const randomArray = new Uint8Array(1)
+    crypto.getRandomValues(randomArray)
+    return randomArray[0] % length
 }
 
 
