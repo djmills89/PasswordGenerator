@@ -53,6 +53,7 @@ html {
 body {
     font-weight: var(--fw-bold);
     font-family: var(--ff-family);
+    background: linear-gradient(to right, var(--grey-900), var(--grey-950));
 }
 
 legend {
@@ -61,6 +62,7 @@ legend {
 
 main {
     padding-inline: var(--space-200);
+    padding-block-start: var(--space-700);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -82,9 +84,20 @@ h1 {
     background-color: var(--grey-800);
 }
 
-.password__display img {
+.password__display svg {
     display: inline-block;
     margin-inline-end: var(--space-200);
+    cursor: pointer;
+    color: var(--green-200);
+}
+
+.password__copy {
+    background: none;
+    border: none;
+}
+
+.password__display button:hover svg {
+    color: var(--white);
 }
 
 .password {
@@ -110,6 +123,7 @@ form {
 
 form input[type="range"] {
     margin-block-end: var(--space-400);
+    accent-color: var(--green-200);
 }
 
 .form__character {
@@ -139,6 +153,10 @@ fieldset label {
     margin-inline-start: var(--space-200);
 }
 
+fieldset input[type="checkbox"] {
+    accent-color: var(--green-200);
+}
+
 .password__strength {
     padding-inline-start: var(--space-200);
     padding-block: 1.4rem;
@@ -161,7 +179,7 @@ fieldset label {
     margin-inline-end: var(--space-200);
 }
 
-.password__strength .strength__levels {
+.strength__levels {
     width: 1rem;
     height: 2.8rem;
     border: 2px solid var(--grey-200);
@@ -170,10 +188,41 @@ fieldset label {
 button[type="submit"] {
     padding-inline: var(--space-1300);
     padding-block: var(--space-200);
+    font-family: var(--ff-family);
     font-size: var(--fs-4);
     font-weight: var(--fw-bold);
     line-height: var(--lh-ex-tight);
     color: var(--grey-800);
     background-color: var(--green-200);
     border: none;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(to right, var(--grey-900), var(--grey-950));
+    border: 2px solid var(--green-200);
+    color: var(--green-200);
+}
+
+button[type="submit"]:hover img {
+    filter: grayscale(100%);
+}
+
+
+.strength-4 {
+    background-color: var(--green-200);
+    border: 2px solid var(--green-200);
+}
+
+.strength-3 {
+    background-color: var(--yellow-300);
+    border: 2px solid var(--yellow-300);
+}
+.strength-2 {
+    background-color: var(--orange-400);
+    border: 2px solid var(--orange-400);
+}
+.strength-1 {
+    background-color: var(--red-500);
+    border: 2px solid var(--red-500);
 }

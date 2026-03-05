@@ -4,6 +4,7 @@ function init() {
     const passwordRange = document.querySelector('input[type="range"]')
     const passwordDisplay = document.querySelector('.password')
     const passwordLength = document.querySelector('.password__length')
+    const copyIcon = document.querySelector('.password__copy')
     passwordLength.textContent = passwordRange.value
 
 
@@ -18,17 +19,32 @@ function init() {
             console.log('you must select at least one option')
             return
         }
-        passwordDisplay.textContent = generatePassword(passwordRange.value, poolArr.split(""), poolArr)
+        const newPassword = generatePassword(passwordRange.value, poolArr)
+        const passwordStrength = calculatePasswordStrength(newPassword)
+        renderStrength(passwordStrength)
+        passwordDisplay.textContent = newPassword
+    })
+
+    copyIcon.addEventListener('click', async () => {
+        try {
+            const text = passwordDisplay.textContent
+
+            await navigator.clipboard.writeText(text)
+            console.log('text copied successfully!')
+        } catch (err) {
+            console.error('failed to copy: ', err)
+        }
     })
 }
 
 
 function setPool(input) {
     let pool = ''
-    const includeUpperCase = Array.from(input).find(element => element.id === 'upper-case').checked
-    const includeLowerCase = Array.from(input).find(element => element.id === 'lower-case').checked
-    const includeNumbers = Array.from(input).find(element => element.id === 'numbers').checked
-    const includeSymbols = Array.from(input).find(element => element.id === 'symbols').checked
+    const inputArr = Array.from(input)
+    const includeUpperCase = inputArr.find(element => element.id === 'upper-case').checked
+    const includeLowerCase = inputArr.find(element => element.id === 'lower-case').checked
+    const includeNumbers = inputArr.find(element => element.id === 'numbers').checked
+    const includeSymbols = inputArr.find(element => element.id === 'symbols').checked
 
 
     if (includeUpperCase) pool += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -55,9 +71,27 @@ function randIndex(length) {
 }
 
 
+function calculatePasswordStrength(pool) {
+    const strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{12,})")
+    const mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{8,})")
+    const weakRegex = new RegExp('(?=.{8,})')
+    //numbers represent levels of password strength, used to determine # of divs to fill
+    if (strongRegex.test(pool)) return 4
+    if (mediumRegex.test(pool)) return 3
+    if (weakRegex.test(pool)) return 2
+    return 1
+}
 
 
+function renderStrength(strength) {
+    const bars = document.querySelectorAll('.strength__levels')
 
+    bars.forEach(bar => bar.classList.remove(`strength-1`, `strength-2`, `strength-3`, `strength-4`))
 
+    for (let i = 0; i < strength; i++) {
+        bars[i].classList.add(`strength-${strength}`)
+    }
+
+}
 
 init()
