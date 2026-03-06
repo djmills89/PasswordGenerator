@@ -68,6 +68,8 @@ main {
     justify-content: center;
     align-items: center;
     gap: var(--space-200);
+    max-width: 54rem;
+    margin: 0 auto;
 }
 
 h1 {
